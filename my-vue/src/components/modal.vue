@@ -8,23 +8,16 @@
             default header
           </slot>
         </div>
-        
         <div class="modal-body">
           <slot name="body">
             default body
           </slot>
         </div>
 
-        <div class="modal-footer">
-          <slot name="footer">
-            default footer
-            <button class="modal-default-button"
-              @click="show = false">
-              OK
-            </button>
-          </slot>
+        <div class="modal-button">
+          <slot name='ok'></slot> 
+          <slot name='no'></slot> 
         </div>
-      </div>
     </div>
   </div>
 </template>
@@ -42,12 +35,29 @@ export default {
     	return {
       		msg: 'Hello World!'
     	}
-  	}
+  	},
+    methods:{
+      isShow:{
+
+      },
+      notShow:{
+
+      },
+      beforeOk:{
+
+      },
+      beforeClose:{
+        
+      }
+    }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.modal-button{
+  text-align: center;
+}
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -86,8 +96,9 @@ export default {
 }
 
 .modal-default-button {
-  float: right;
+
 }
+
 
 /*
  * the following styles are auto-applied to elements with
