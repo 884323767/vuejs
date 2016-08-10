@@ -11,8 +11,8 @@
 	          </slot>
 	        </div>
 	        <div class="footer">
-	      		<button class='button' v-if='!!popUp.cancel' @click='cancelEvent'>{{popUp.cancel}}</button>
-	      		<button class='button' v-if='!!popUp.confirm' @click='confirmEvent'>{{popUp.confirm}}</button>
+	      		<button class='button' v-if='!!popUp.cancel' @click.stop='cancelEvent'>{{popUp.cancel}}</button>
+	      		<button class='button' v-if='!!popUp.confirm' @click.stop='confirmEvent'>{{popUp.confirm}}</button>
 				</div>
   		</div>
   	</div>

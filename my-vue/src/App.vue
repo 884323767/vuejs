@@ -2,7 +2,10 @@
   <div id="app">
     <button id='show-modal' @click.stop='showModal'>{{msg}}</button>
     <pop-up :pop-up='popUp'>
-     <div slot='body'>{{boxMsg}}</div>
+     <div slot='body'>
+      <h4>{{boxMsg}}</h4>
+      <p>test</p>
+     </div>
     </pop-up>
   </div>
 </template>
@@ -22,7 +25,12 @@ export default {
         title:'app title',
         confirm:'确定',
         cancel:'取消',
-        beforeOk () {alert('1')},
+        beforeOk () {
+          this.show=true;
+          setTimeout(()=>{
+            this.show=false;
+            console.log('beforeOK');},10000)
+          },
         beforeClose () {alert('2')}
       },
     }
