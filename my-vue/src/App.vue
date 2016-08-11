@@ -1,49 +1,53 @@
 <template>
   <div id="app">
-    <button id='show-modal' @click.stop='showModal'>{{msg}}</button>
-    <pop-up :pop-up='popUp'>
+    <button id='show-modal' @click='showModal'>{{msg}}</button>
+    <popup :popup='popup'>
      <div slot='body'>
       <h4>{{boxMsg}}</h4>
       <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <input type="text" name="">>
      </div>
     </pop-up>
   </div>
 </template>
 
 <script>
-import popUp from './components/popUp'
+import popup from './components/Popup'
 export default {
   components: {
-    popUp
+    popup
   },
   data (){
     return{
       msg: 'click',
       boxMsg: 'app msg',
-      popUp:{
-        show:false,
-        title:'app title',
-        confirm:'确定',
-        cancel:'取消',
-        beforeOk () {
-          this.show=true;
-          setTimeout(()=>{
-            this.show=false;
-            console.log('beforeOK');},10000)
-          },
-        beforeClose () {alert('2')}
+      popup:{
+        show:false,                //弹窗是否显示,false不显示，true显示
+          title:'app title',         //弹窗标题
+          confirm:'确认',            //确认按钮显示文本,没有则不显示确认按钮
+          cancel:'取消',             //取消按钮显示文本，没有则不显示取消按钮
+          beforeOk () {alert('beforeOk')},  
+          beforeClose () {this.show=true;}
       },
     }
   },
   methods:{
     showModal(){
-      this.popUp.show = true;
+      debugger
+      this.popup.show = true;
     },
     hiddenModal(){
       this.show = false;
     },
   },
   ready () {
+
   },
 }
 </script>
