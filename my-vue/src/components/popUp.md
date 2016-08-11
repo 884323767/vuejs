@@ -1,6 +1,6 @@
 ## 统一弹窗说明:
 
-引入组件popUp:
+引入组件Popup:
 ```javascript
 import popup from './components/Popup.vue'
 ```
