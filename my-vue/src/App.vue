@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <button id='show-modal' @click='showModal'>{{msg}}</button>
+  <router-view></router-view>
+  <div id="app" class="app">
+    <toolbar></toolbar>
+    <notes-list></notes-list>
+    <editor></editor>
+  </div>
+
+    <!-- <button id='show-modal' @click='showModal'>{{msg}}</button>
     <popup :popup='popup'>
      <div slot='body'>
       <h4>{{boxMsg}}</h4>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
       <input type="text" name="">>
      </div>
-    </pop-up>
+    </pop-up> -->
   </div>
 </template>
 
 <script>
 import popup from './components/Popup'
+import Toolbar from './components/Toolbar';
+import NotesList from './components/NotesList';
+import Editor from './components/Editor';
+import store from './vuex/store';
+import { initStore } from './vuex/actions';
 export default {
   components: {
-    popup
-  },
+    popup,Toolbar, NotesList, Editor
+       },
   data (){
     return{
       msg: 'click',
@@ -33,13 +37,18 @@ export default {
           confirm:'确认',            //确认按钮显示文本,没有则不显示确认按钮
           cancel:'取消',             //取消按钮显示文本，没有则不显示取消按钮
           beforeOk () {alert('beforeOk')},  
-          beforeClose () {this.show=true;}
+          beforeClose () {alert('beforeClose')}
       },
+    }
+  },
+  store,
+  vuex:{
+    actions:{
+      initStore
     }
   },
   methods:{
     showModal(){
-      debugger
       this.popup.show = true;
     },
     hiddenModal(){
@@ -47,7 +56,7 @@ export default {
     },
   },
   ready () {
-
+    this.initStore();
   },
 }
 </script>
